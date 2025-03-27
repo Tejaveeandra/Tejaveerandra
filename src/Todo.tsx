@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/todoList"; // Backend URL
+const API_URL = "http://localhost:8080/todoList"; 
 
 type Todo = {
   id: number;
@@ -10,7 +10,7 @@ type Todo = {
 };
 
 type TodoAppProps = {
-  showAlert: (message: string) => void; // Alert function prop
+  showAlert: (message: string) => void;
 };
 
 const TodoApp: React.FC<TodoAppProps> = ({ showAlert }) => {
@@ -34,7 +34,7 @@ const TodoApp: React.FC<TodoAppProps> = ({ showAlert }) => {
         .then((response) => {
           setTodos([...todos, response.data]);
           setNewTodo("");
-          showAlert("Task added successfully!"); // Alert after adding task
+          showAlert("Task added successfully!"); 
         })
         .catch((error) => console.error("Error adding task:", error));
     }
@@ -45,7 +45,7 @@ const TodoApp: React.FC<TodoAppProps> = ({ showAlert }) => {
       .delete(`${API_URL}/delete?id=${id}`)
       .then(() => {
         setTodos(todos.filter((todo) => todo.id !== id));
-        showAlert("Task deleted successfully!"); // Alert after deleting task
+        showAlert("Task deleted successfully!"); 
       })
       .catch((error) => console.error("Error deleting task:", error));
   };
@@ -59,7 +59,7 @@ const TodoApp: React.FC<TodoAppProps> = ({ showAlert }) => {
           setTodos(todos.map((todo) => (todo.id === id ? response.data : todo)));
           setUpdatedTask("");
           setEditTodoId(null);
-          showAlert("Task updated successfully!"); // Alert after updating task
+          showAlert("Task updated successfully!"); 
         })
         .catch((error) => console.error("Error updating task:", error));
     }
